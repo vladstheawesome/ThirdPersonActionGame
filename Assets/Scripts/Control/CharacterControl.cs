@@ -60,12 +60,12 @@ namespace ThirdPersonGame.Control
         {
             bool SwitchBack = false;
 
-            if (!IsFacingForward())
+            /*if (!IsFacingForward())
             {
                 SwitchBack = true;
             }
 
-            FaceForward(true);
+            FaceForward(true);*/
 
             //SetRagDollParts();
             SetColliderSpheres();

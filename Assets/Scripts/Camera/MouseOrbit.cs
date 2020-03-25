@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ThirdPersonGame.Control;
 using UnityEngine;
 
 public class MouseOrbit : MonoBehaviour
@@ -73,8 +74,8 @@ public class MouseOrbit : MonoBehaviour
      * to adjusting the camera to avoid geometry clipping */
     void LateUpdate()
     {
-        //transform.position = viewTarget.position + currentOffset;
-        float movement = Input.GetAxis("Horizontal") * angularSpeed * Time.deltaTime;
+        //float mouseHorDirection = Input.GetAxis("Mouse X");
+        //var animator = viewTarget.GetComponentInChildren<Animator>();
 
         if (!viewTarget)
             return;
@@ -88,8 +89,22 @@ public class MouseOrbit : MonoBehaviour
         {
             RotateCamera();
 
+            #region
+            //if (mouseHorDirection > Mathf.Epsilon)
+            //{
+            //    //animate rotate right
+            //    animator.SetBool("TurnRight", true);
+            //    animator.SetLookAtPosition(newRotation.eulerAngles);                
+            //}
+            //else
+            //{
+            //    animator.SetBool("TurnRight", false);
+            //}
+            #endregion
+
             // rotate player with Camera
             viewTarget.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+            //Debug.Log("Mouse down at " + Input.GetAxis("Mouse X"));
         }
 
         else
@@ -117,7 +132,6 @@ public class MouseOrbit : MonoBehaviour
         smoothDistance = Mathf.Lerp(smoothDistance, distance, TimeSignature(distanceSpeed));
 
         /*We give the rotation some smoothing for a nicer effect */
-
         smoothRotation = Quaternion.Slerp(smoothRotation, newRotation, TimeSignature((1 / rotationDampening) * 100.0f));
 
         newPosition = viewTarget.position;

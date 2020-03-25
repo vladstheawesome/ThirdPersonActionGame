@@ -10,6 +10,7 @@ namespace ThirdPersonGame.States
     [CreateAssetMenu(fileName = "New State", menuName = "ThirdPersonGame/AbilityData/Attack")]
     public class Attack : StateData
     {
+        public bool debug;
         public float StartAttackTime;
         public float EndAttackTime;
         public List<string> ColliderNames = new List<string>(); // List of body parts the attack is using
@@ -17,7 +18,6 @@ namespace ThirdPersonGame.States
         public bool MustFaceAttacker;
         public float LethalRange;
         public int MaxHits;
-        //public List<RuntimeAnimatorController> DeathAnimators = new List<RuntimeAnimatorController>();
 
         private List<AttackInfo> FinishedAttacks = new List<AttackInfo>();
 
@@ -27,7 +27,6 @@ namespace ThirdPersonGame.States
 
             // Instantiate AttackInfo Prefab
             // Prefab needs to be in a folder called RESOURCES
-            // GameObject obj = Instantiate(Resources.Load("AttackInfo", typeof(GameObject))) as GameObject;
             GameObject obj = PoolManager.Instance.GetObject(PoolObjectType.ATTACKINFO); 
             AttackInfo info = obj.GetComponent<AttackInfo>();
 
@@ -46,6 +45,7 @@ namespace ThirdPersonGame.States
         {
             RegisterAttack(characterState, animator, stateInfo);
             DeregisterAttack(characterState, animator, stateInfo);
+            CheckCombo(characterState, animator, stateInfo);
         }
 
         // As we update the ability, we register the attack
@@ -63,6 +63,10 @@ namespace ThirdPersonGame.States
 
                     if (!info.isRegistered && info.AttackAbility == this)
                     {
+                        if (debug)
+                        {
+                            Debug.Log(this.name + " registered: " + stateInfo.normalizedTime);
+                        }
                         info.Register(this);
                     }
                 }
@@ -83,8 +87,30 @@ namespace ThirdPersonGame.States
                     if (info.AttackAbility == this && !info.isFinished)
                     {
                         info.isFinished = true;
-                        //Destroy(info.gameObject);
                         info.GetComponent<PoolObject>().TurnOff();
+
+                        if (debug)
+                        {
+                            Debug.Log(this.name + " de-registered: " + stateInfo.normalizedTime);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void CheckCombo(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
+        {
+            // Set up the timing for the combo attack
+            // if animation time is past a third of the registered time
+            if (stateInfo.normalizedTime >= StartAttackTime + ((EndAttackTime - StartAttackTime) / 3f))
+            {
+                if (stateInfo.normalizedTime < EndAttackTime + ((EndAttackTime - StartAttackTime) / 2f))
+                {
+                    CharacterControl control = characterState.GetCharacterControl(animator);
+                    if (control.Attack)
+                    {
+                        Debug.Log("Uppercut triggerd!");
+                        animator.SetBool(TransitionParameter.Attack.ToString(), true);
                     }
                 }
             }
@@ -92,6 +118,7 @@ namespace ThirdPersonGame.States
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
+            animator.SetBool(TransitionParameter.Attack.ToString(), false);
             ClearAttack();
         }
 
@@ -101,7 +128,7 @@ namespace ThirdPersonGame.States
 
             foreach(AttackInfo info in AttackManager.Instance.CurrentAttacks)
             {
-                if (info == null || info.isFinished)
+                if (info == null || info.AttackAbility == this /*info.isFinished*/)
                 {
                     FinishedAttacks.Add(info);
                 }
@@ -115,11 +142,5 @@ namespace ThirdPersonGame.States
                 }
             }
         }
-
-        /*public RuntimeAnimatorController GetDeathAnimator()
-        {
-            int index = Random.Range(0, DeathAnimators.Count);
-            return DeathAnimators[index];
-        }*/
     }
 }

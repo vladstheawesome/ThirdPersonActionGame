@@ -9,7 +9,7 @@ namespace ThirdPersonGame.Core
         void Update()
         {
             // Control
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) || (Input.GetMouseButton(0) && Input.GetMouseButton(1)))
             {
                 VirtualInputManager.Instance.MoveForward = true;
             }

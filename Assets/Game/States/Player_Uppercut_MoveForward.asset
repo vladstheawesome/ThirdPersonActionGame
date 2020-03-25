@@ -10,32 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de5ca9f637ab8a24fa72acbaec9d64de, type: 3}
-  m_Name: Player_Walk_MoveForward
+  m_Name: Player_Uppercut_MoveForward
   m_EditorClassIdentifier: 
-  Constant: 0
+  Constant: 1
   SpeedGraph:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.6164266
+      outSlope: -0.6164266
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
+      time: 0.38407552
+      value: 0.76324564
+      inSlope: -2.1444056
+      outSlope: -2.1444056
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.22636013
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: -2.4231951
+      outSlope: -2.4231951
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.23968092
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Speed: 3.5
+  Speed: 0.5
   BlockDistance: 0.1

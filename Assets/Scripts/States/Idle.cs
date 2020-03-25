@@ -14,7 +14,6 @@ namespace ThirdPersonGame.States
         {
             animator.SetBool(TransitionParameter.Jump.ToString(), false);
             animator.SetBool(TransitionParameter.Attack.ToString(), false);
-            //animator.SetBool(TransitionParameter.RotateRight.ToString(), false);
         }
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -54,7 +53,7 @@ namespace ThirdPersonGame.States
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            
+            animator.SetBool(TransitionParameter.Attack.ToString(), false);
         }
     }
 }
