@@ -22,7 +22,7 @@ namespace ThirdPersonGame.Core
             }
         }
 
-        public RuntimeAnimatorController GetAnimator(GeneralBodyPart generalBodyPart)
+        public RuntimeAnimatorController GetAnimator(GeneralBodyPart generalBodyPart, AttackInfo info)
         {
             // Based on a particular body part, we are going  
             // to return a specific death animation
@@ -33,16 +33,26 @@ namespace ThirdPersonGame.Core
 
             foreach (DeathAnimationData data in deathAnimationLoader.DeathAnimationDataList)
             {
-                foreach(GeneralBodyPart part in data.GeneralBodyParts)
+                if (info.LaunchIntoAir)
                 {
-                    // if part matches
-                    if (part == generalBodyPart)
+                    if (data.LaunchIntoAir)
                     {
-                        // add the death animations for that body part
                         Candidates.Add(data.Animator);
-                        break;
                     }
                 }
+                else
+                {
+                    foreach (GeneralBodyPart part in data.GeneralBodyParts)
+                    {
+                        // if part matches
+                        if (part == generalBodyPart)
+                        {
+                            // add the death animations for that body part
+                            Candidates.Add(data.Animator);
+                            break;
+                        }
+                    }
+                }                
             }
 
             return Candidates[Random.Range(0, Candidates.Count)];

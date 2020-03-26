@@ -91,7 +91,7 @@ namespace ThirdPersonGame.PooledObjects
             //control.SkinnedMeshAnimator.runtimeAnimatorController = info.AttackAbility.GetDeathAnimator();
 
             // Pass the damaged part of the body (to determine which death animation to play)
-            control.SkinnedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.Instance.GetAnimator(DamagedPart);
+            control.SkinnedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.Instance.GetAnimator(DamagedPart, info);
             info.CurrentHits++;
 
             // turn off box collider of dead enemy character

@@ -11,10 +11,9 @@ namespace ThirdPersonGame.Death
         // We want to be able to specify which body part   
         // each of the death animations is associated with
         public List<GeneralBodyPart> GeneralBodyParts = new List<GeneralBodyPart>();
-
-        // The animation of the death
-        public RuntimeAnimatorController Animator;
-
+        
+        public RuntimeAnimatorController Animator; // The animation of the death
+        public bool LaunchIntoAir;
         public bool IsFacingAttacker;
     }
 }
