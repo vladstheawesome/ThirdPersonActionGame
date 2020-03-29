@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ThirdPersonGame.PooledObjects;
 using ThirdPersonGame.Core;
 using UnityEngine;
+using ThirdPersonGame.Interact;
 
 namespace ThirdPersonGame.Control
 {
@@ -17,6 +18,7 @@ namespace ThirdPersonGame.Control
         Attack,
         StrafeRight,
         StrafeLeft,
+        TransitionIndex,
     }
 
     public class CharacterControl : MonoBehaviour
@@ -28,6 +30,9 @@ namespace ThirdPersonGame.Control
         public bool Attack;
         public bool StrafeRight;
         public bool StrafeLeft;
+        public bool MoveUp;
+        public bool MoveDown;
+        public LedgeChecker ledgeChecker;
 
         public GameObject ColliderEdgePrefab;
         public List<GameObject> BottomSpheres = new List<GameObject>();
@@ -58,7 +63,7 @@ namespace ThirdPersonGame.Control
 
         private void Awake()
         {
-            bool SwitchBack = false;
+            //bool SwitchBack = false;
 
             /*if (!IsFacingForward())
             {
@@ -70,10 +75,12 @@ namespace ThirdPersonGame.Control
             //SetRagDollParts();
             SetColliderSpheres();
 
-            if (SwitchBack)
-            {
-                FaceForward(false);
-            }
+            //if (SwitchBack)
+            //{
+            //    FaceForward(false);
+            //}
+
+            ledgeChecker = GetComponentInChildren<LedgeChecker>();
         }
 
         public List<TriggerDetector> GetAllTriggers()

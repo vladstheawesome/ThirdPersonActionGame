@@ -18,6 +18,24 @@ namespace ThirdPersonGame.Core
         void Update()
         {
             // Control
+            if (VirtualInputManager.Instance.MoveUp)
+            {
+                characterControl.MoveUp = true;
+            }
+            else
+            {
+                characterControl.MoveUp = false;
+            }
+
+            if (VirtualInputManager.Instance.MoveDown)
+            {
+                characterControl.MoveDown = true;
+            }
+            else
+            {
+                characterControl.MoveDown = false;
+            }
+
             if (VirtualInputManager.Instance.MoveForward)
             {
                 characterControl.MoveForward = true;

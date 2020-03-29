@@ -39,7 +39,7 @@ namespace ThirdPersonGame.States
             
         }
 
-        bool IsGrounded(CharacterControl control)
+        public bool IsGrounded(CharacterControl control)
         {
             if (control.RIGID_BODY.velocity.y  > -0.001f && control.RIGID_BODY.velocity.y <= 0f)
             {

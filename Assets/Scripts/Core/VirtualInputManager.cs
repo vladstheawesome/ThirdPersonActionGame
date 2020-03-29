@@ -14,5 +14,7 @@ namespace ThirdPersonGame.Core
         public bool Attack;
         public bool StrafeRight;
         public bool StrafeLeft;
+        public bool MoveUp;
+        public bool MoveDown;
     }
 }

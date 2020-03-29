@@ -1,30 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ThirdPersonGame.Control;
+using ThirdPersonGame.States;
 using UnityEngine;
 
 namespace ThirdPersonGame.Core
 {
     public class KeyboardInput : MonoBehaviour
     {
+        //private CharacterControl characterControl;
+        CharacterControl control;
+        public Transform Player;
+
+        private void Awake()
+        {
+            control = this.transform.GetComponent<CharacterControl>();
+        }
+
         void Update()
         {
+            control = Player.transform.root.GetComponent<CharacterControl>();
+            GroundDetector checkGround = (GroundDetector) ScriptableObject.CreateInstance(typeof(GroundDetector));
+
             // Control
             if (Input.GetKey(KeyCode.W) || (Input.GetMouseButton(0) && Input.GetMouseButton(1)))
             {
-                VirtualInputManager.Instance.MoveForward = true;
+                if (checkGround.IsGrounded(control) || VirtualInputManager.Instance.Jump == true)
+                {
+                    VirtualInputManager.Instance.MoveForward = true;
+                }
+                else
+                {
+                    VirtualInputManager.Instance.MoveUp = true;
+                }
             }
             else
             {
-                VirtualInputManager.Instance.MoveForward = false;
+                if (checkGround.IsGrounded(control) || VirtualInputManager.Instance.Jump == true)
+                {
+                    VirtualInputManager.Instance.MoveForward = false;
+                }
+                else
+                {
+                    VirtualInputManager.Instance.MoveUp = false;
+                }
             }
 
             if (Input.GetKey(KeyCode.S))
             {
-                VirtualInputManager.Instance.MoveBackwards = true;
+                if (checkGround.IsGrounded(control))
+                {
+                    VirtualInputManager.Instance.MoveBackwards = true;
+                }
+                else
+                {
+                    VirtualInputManager.Instance.MoveDown = true;
+                }
             }
             else
             {
-                VirtualInputManager.Instance.MoveBackwards = false;
+                if (checkGround.IsGrounded(control))
+                {
+                    VirtualInputManager.Instance.MoveBackwards = false;
+                }
+                else
+                {
+                    VirtualInputManager.Instance.MoveDown = false;
+                }
             }
 
             if (Input.GetKey(KeyCode.Space))
