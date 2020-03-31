@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using ThirdPersonGame.Control;
+using ThirdPersonGame.Interact;
 using UnityEngine;
 
 public class MouseOrbit : MonoBehaviour
@@ -77,6 +78,11 @@ public class MouseOrbit : MonoBehaviour
         //float mouseHorDirection = Input.GetAxis("Mouse X");
         //var animator = viewTarget.GetComponentInChildren<Animator>();
 
+        // if player is on a ledge (Grabbing), we do not want to turn the character
+        MouseConstraints mouseConstraints = new MouseConstraints();        
+        var control = viewTarget.transform.root.GetComponent<CharacterControl>();
+        var isOnLedge = mouseConstraints.MouseTurnOnLedge(control);
+
         if (!viewTarget)
             return;
 
@@ -85,9 +91,9 @@ public class MouseOrbit : MonoBehaviour
             RotateCamera();
         }
 
-        if (Input.GetMouseButton(1) /*|| Input.GetMouseButton(0)*/ )
+        if (Input.GetMouseButton(1) /*|| Input.GetMouseButton(0)*/ && !isOnLedge)
         {
-            RotateCamera();
+                RotateCamera();           
 
             #region
             //if (mouseHorDirection > Mathf.Epsilon)
