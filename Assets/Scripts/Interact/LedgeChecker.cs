@@ -26,7 +26,7 @@ namespace ThirdPersonGame.Interact
             if (CheckLedge != null)
             {
                 IsGrabbingLedge = false;
-                GrabbedLedge = null;
+                //GrabbedLedge = null;
             }
         }
     }

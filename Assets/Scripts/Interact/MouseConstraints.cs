@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ThirdPersonGame.Interact
 {
-    public class MouseConstraints : MonoBehaviour
+    public class MouseConstraints
     {
         public bool MouseTurnOnLedge(CharacterControl control)
         {

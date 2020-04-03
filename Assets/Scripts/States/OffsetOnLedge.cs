@@ -39,7 +39,9 @@ namespace ThirdPersonGame.States
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-
+            CharacterControl control = characterState.GetCharacterControl(animator);
+            GameObject anim = control.SkinnedMeshAnimator.gameObject;
+            anim.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }

@@ -931,6 +931,21 @@ PrefabInstance:
       propertyPath: characterXRotation
       value: 8.01
       objectReference: {fileID: 0}
+    - target: {fileID: 8661155987270337642, guid: 899185d05c042ae4bb2caf663a1fc3fa,
+        type: 3}
+      propertyPath: EndPosition.z
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661155987270337642, guid: 899185d05c042ae4bb2caf663a1fc3fa,
+        type: 3}
+      propertyPath: EndPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661155987270337642, guid: 899185d05c042ae4bb2caf663a1fc3fa,
+        type: 3}
+      propertyPath: EndPosition.x
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 899185d05c042ae4bb2caf663a1fc3fa, type: 3}
 --- !u!1 &918601233

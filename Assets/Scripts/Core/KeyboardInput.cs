@@ -96,6 +96,15 @@ namespace ThirdPersonGame.Core
                 VirtualInputManager.Instance.StrafeLeft = false;
             }
 
+            //if (Input.GetKey(KeyCode.D))
+            //{
+            //    VirtualInputManager.Instance.BracedShimmyRight = true;
+            //}
+            //else
+            //{
+            //    VirtualInputManager.Instance.BracedShimmyRight = false;
+            //}
+
             // Combat
             if (Input.GetKey(KeyCode.J))
             {

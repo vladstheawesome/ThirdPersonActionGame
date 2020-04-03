@@ -81,6 +81,16 @@ namespace ThirdPersonGame.Control
             //}
 
             ledgeChecker = GetComponentInChildren<LedgeChecker>();
+
+            RegisterCharacter();
+        }
+
+        private void RegisterCharacter()
+        {
+            if (!CharacterManager.Instance.Characters.Contains(this))
+            {
+                CharacterManager.Instance.Characters.Add(this);
+            }
         }
 
         public List<TriggerDetector> GetAllTriggers()

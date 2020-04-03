@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ThirdPersonGame.Control;
 using ThirdPersonGame.Core;
+using ThirdPersonGame.Interact;
 using UnityEngine;
 
 namespace ThirdPersonGame.States
@@ -87,9 +88,9 @@ namespace ThirdPersonGame.States
                 RaycastHit hit;
                 if (Physics.Raycast(o.transform.position, control.transform.forward, out hit, BlockDistance))
                 {
-                    if (!control.RagdollParts.Contains(hit.collider))
+                    if (!control.RagdollParts.Contains(hit.collider) )
                     {
-                        if(!IsBodyPart(hit.collider))
+                        if(!IsBodyPart(hit.collider) && !Ledge.IsLedge(hit.collider.gameObject))
                         {
                             return true;
                         }

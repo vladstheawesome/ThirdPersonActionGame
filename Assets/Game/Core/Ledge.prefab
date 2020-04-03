@@ -107,3 +107,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Offset_HangingBrace: {x: 0, y: -3.68, z: -1.03}
   characterXRotation: 8.01
+  EndPosition: {x: 0, y: 0.15, z: 0.28}
