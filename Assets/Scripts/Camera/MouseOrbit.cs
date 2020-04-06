@@ -79,9 +79,9 @@ public class MouseOrbit : MonoBehaviour
         //var animator = viewTarget.GetComponentInChildren<Animator>();
 
         // if player is on a ledge (Grabbing), we do not want to turn the character
-        MouseConstraints mouseConstraints = new MouseConstraints();        
+        UngroundedConstraints mouseConstraints = new UngroundedConstraints();        
         var control = viewTarget.transform.root.GetComponent<CharacterControl>();
-        var isOnLedge = mouseConstraints.MouseTurnOnLedge(control);
+        var isOnLedge = mouseConstraints.IsPlayerOnLedge(control);
 
         if (!viewTarget)
             return;

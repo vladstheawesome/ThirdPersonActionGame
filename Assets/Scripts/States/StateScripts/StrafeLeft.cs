@@ -28,7 +28,7 @@ namespace ThirdPersonGame.States
 
             if (control.StrafeLeft)
             {
-                control.PlayerStrafeLeft(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
+                control.PlayerStrafeOrShimmyLeft(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
             }
         }
 

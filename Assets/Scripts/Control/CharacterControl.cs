@@ -19,6 +19,8 @@ namespace ThirdPersonGame.Control
         StrafeRight,
         StrafeLeft,
         TransitionIndex,
+        ShimmyRight,
+        ShimmyLeft,
     }
 
     public class CharacterControl : MonoBehaviour
@@ -32,6 +34,8 @@ namespace ThirdPersonGame.Control
         public bool StrafeLeft;
         public bool MoveUp;
         public bool MoveDown;
+        public bool ShimmyRight;
+        public bool ShimmyLeft;
         public LedgeChecker ledgeChecker;
 
         public GameObject ColliderEdgePrefab;
@@ -251,12 +255,12 @@ namespace ThirdPersonGame.Control
             }
         }
 
-        public void PlayerStrafeRight(float Speed, float SpeedGraph)
+        public void PlayerStrafeOrShimmyRight(float Speed, float SpeedGraph)
         {
-            transform.Translate(Vector3.right * SpeedGraph * Speed * Time.deltaTime);            
+            transform.Translate(Vector3.right * SpeedGraph * Speed * Time.deltaTime);  
         }
 
-        public void PlayerStrafeLeft(float Speed, float SpeedGraph)
+        public void PlayerStrafeOrShimmyLeft(float Speed, float SpeedGraph)
         {
             transform.Translate(-Vector3.right * SpeedGraph * Speed * Time.deltaTime);
         }

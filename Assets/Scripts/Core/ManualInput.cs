@@ -81,6 +81,24 @@ namespace ThirdPersonGame.Core
                 characterControl.StrafeLeft = false;
             }
 
+            if (VirtualInputManager.Instance.ShimmyRight)
+            {
+                characterControl.ShimmyRight = true;
+            }
+            else
+            {
+                characterControl.ShimmyRight = false;
+            }
+
+            if (VirtualInputManager.Instance.ShimmyLeft)
+            {
+                characterControl.ShimmyLeft = true;
+            }
+            else
+            {
+                characterControl.ShimmyLeft = false;
+            }
+
             // Combat
             if (VirtualInputManager.Instance.Attack)
             {

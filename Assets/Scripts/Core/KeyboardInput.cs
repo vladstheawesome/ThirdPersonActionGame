@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using ThirdPersonGame.Control;
+using ThirdPersonGame.Interact;
 using ThirdPersonGame.States;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ namespace ThirdPersonGame.Core
         {
             control = Player.transform.root.GetComponent<CharacterControl>();
             GroundDetector checkGround = (GroundDetector) ScriptableObject.CreateInstance(typeof(GroundDetector));
+            var ledge = control.ledgeChecker;
 
             // Control
             if (Input.GetKey(KeyCode.W) || (Input.GetMouseButton(0) && Input.GetMouseButton(1)))
@@ -96,14 +98,23 @@ namespace ThirdPersonGame.Core
                 VirtualInputManager.Instance.StrafeLeft = false;
             }
 
-            //if (Input.GetKey(KeyCode.D))
-            //{
-            //    VirtualInputManager.Instance.BracedShimmyRight = true;
-            //}
-            //else
-            //{
-            //    VirtualInputManager.Instance.BracedShimmyRight = false;
-            //}
+            if (Input.GetKey(KeyCode.D) && ledge.IsGrabbingLedge)
+            { 
+                VirtualInputManager.Instance.ShimmyRight = true;
+            }
+            else
+            {
+                VirtualInputManager.Instance.ShimmyRight = false;
+            }
+
+            if (Input.GetKey(KeyCode.A) && ledge.IsGrabbingLedge)
+            {
+                VirtualInputManager.Instance.ShimmyLeft = true;
+            }
+            else
+            {
+                VirtualInputManager.Instance.ShimmyLeft = false;
+            }
 
             // Combat
             if (Input.GetKey(KeyCode.J))

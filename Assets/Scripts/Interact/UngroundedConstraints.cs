@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace ThirdPersonGame.Interact
 {
-    public class MouseConstraints
+    public class UngroundedConstraints
     {
-        public bool MouseTurnOnLedge(CharacterControl control)
+        public bool IsPlayerOnLedge(CharacterControl control)
         {
             var isOnLedge = control.ledgeChecker.IsGrabbingLedge;
             return isOnLedge;

@@ -15,7 +15,9 @@ namespace ThirdPersonGame.States
         JUMP,
         GRABBING_LEDGE,
         LEANING_ON_WALL,
-        CROUCHING_ON_WALL
+        CROUCHING_ON_WALL,
+        SHIMMY_RIGHT,
+        SHIMMY_LEFT,
     }
 
     [CreateAssetMenu(fileName = "New State", menuName = "ThirdPersonGame/AbilityData/TransitionIndexer")]
@@ -38,7 +40,7 @@ namespace ThirdPersonGame.States
             CharacterControl control = characterState.GetCharacterControl(animator);
             if (MakeTransition(control))
             {
-                animator.SetInteger(TransitionParameter.TransitionIndex.ToString(), Index);
+                 animator.SetInteger(TransitionParameter.TransitionIndex.ToString(), Index);
             }
             else
             {
@@ -75,7 +77,7 @@ namespace ThirdPersonGame.States
                         break;
                     case TransitionConditionType.LEFT:
                         {
-                            if (!control.StrafeLeft)
+                            if (!control.ShimmyLeft)
                             {
                                 return false;
                             }
@@ -83,7 +85,7 @@ namespace ThirdPersonGame.States
                         break;
                     case TransitionConditionType.RIGHT:
                         {
-                            if (!control.StrafeRight)
+                            if (!control.ShimmyRight)
                             {
                                 return false;
                             }
@@ -122,8 +124,16 @@ namespace ThirdPersonGame.States
                         {
 
                         }
-                        break;
-                        
+                        break;                    
+                    //case TransitionConditionType.SHIMMY_LEFT:
+                    //    {
+                    //        if (!control.ShimmyLeft)
+                    //        {
+                    //            return false;
+                    //        }
+                    //    }
+                    //    break;
+
                 }
             }
 

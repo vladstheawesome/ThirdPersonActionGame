@@ -16,5 +16,7 @@ namespace ThirdPersonGame.Core
         public bool StrafeLeft;
         public bool MoveUp;
         public bool MoveDown;
+        public bool ShimmyRight;
+        public bool ShimmyLeft;
     }
 }

@@ -16,9 +16,7 @@ namespace ThirdPersonGame.States
             CharacterControl control = characterState.GetCharacterControl(animator);
             GameObject anim = control.SkinnedMeshAnimator.gameObject;
 
-            var xPosition = control.transform.localPosition.x;
-            anim.transform.parent = control.ledgeChecker.GrabbedLedge.transform;
-            //anim.transform.localPosition = control.ledgeChecker.GrabbedLedge.Offset_HangingBrace;            
+            anim.transform.parent = control.ledgeChecker.GrabbedLedge.transform;        
 
             var localY = control.ledgeChecker.GrabbedLedge.Offset_HangingBrace.y;
             var localZ = control.ledgeChecker.GrabbedLedge.Offset_HangingBrace.z;
@@ -34,7 +32,6 @@ namespace ThirdPersonGame.States
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
-
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
