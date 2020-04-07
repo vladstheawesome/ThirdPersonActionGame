@@ -29,14 +29,14 @@ public class HangbraceShimmyLeft : StateData
 
         if (control.ShimmyLeft)
         {
-            var localZ = control.ledgeChecker.GrabbedLedge.Offset_HangingBrace.z;
+            animator.SetBool(TransitionParameter.ShimmyLeft.ToString(), true);
 
-            control.SkinnedMeshAnimator.transform.localPosition = VectorPosition.ChangeZ(control.SkinnedMeshAnimator.transform.localPosition, localZ);
+            var localY = control.ledgeChecker.GrabbedLedge.Offset_HangingBrace.y;
+            control.SkinnedMeshAnimator.transform.localPosition = VectorPosition.ChangeY(control.SkinnedMeshAnimator.transform.localPosition, localY);
 
             control.PlayerStrafeOrShimmyLeft(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
             control.SkinnedMeshAnimator.transform.position = control.transform.position;
-            animator.SetBool(TransitionParameter.ShimmyLeft.ToString(), true);
-        }
+      }
     }
 
     public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
