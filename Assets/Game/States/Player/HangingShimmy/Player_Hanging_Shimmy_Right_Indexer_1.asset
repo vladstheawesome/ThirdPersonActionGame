@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364378aaf1378404e9f2b0b9d4f88804, type: 3}
   m_Name: Player_Hanging_Shimmy_Right_Indexer_1
   m_EditorClassIdentifier: 
-  Index: 3
+  Index: 1
   transitionConditions: 03000000

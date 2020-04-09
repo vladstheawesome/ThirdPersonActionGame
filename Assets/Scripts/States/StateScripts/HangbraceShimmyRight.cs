@@ -37,8 +37,7 @@ public class HangbraceShimmyRight : StateData
             var newLocal = control.ledgeChecker.transform.position.y - (control.ledgeChecker.transform.position.y - localY);
 
             control.SkinnedMeshAnimator.transform.localPosition = VectorPosition.ChangeY(control.SkinnedMeshAnimator.transform.localPosition, newLocal);
-            //control.transform.position = VectorPosition.ChangeY(control.transform.position, newLocal);
-
+            
             control.PlayerStrafeOrShimmyRight(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
             control.SkinnedMeshAnimator.transform.position = control.transform.position;
         }
