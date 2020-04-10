@@ -1053,7 +1053,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: 363.41, z: 0}
 --- !u!1 &1071418813
 GameObject:
@@ -1181,7 +1181,7 @@ Transform:
   - {fileID: 1923582635}
   - {fileID: 1071418814}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1627832679
 GameObject:
@@ -1541,7 +1541,7 @@ PrefabInstance:
     - target: {fileID: 821411825859251189, guid: 899185d05c042ae4bb2caf663a1fc3fa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 821411825859251189, guid: 899185d05c042ae4bb2caf663a1fc3fa,
         type: 3}
@@ -1684,7 +1684,7 @@ PrefabInstance:
     - target: {fileID: 7719719362626155116, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7719719362626155116, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
@@ -1700,22 +1700,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420970488, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420970486, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 420970486, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 420970486, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}

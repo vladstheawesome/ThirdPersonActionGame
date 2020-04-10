@@ -78,6 +78,8 @@ public class MouseOrbit : MonoBehaviour
         //float mouseHorDirection = Input.GetAxis("Mouse X");
         //var animator = viewTarget.GetComponentInChildren<Animator>();
 
+        //float keysOrbitingSpeed = 120;
+
         // if player is on a ledge (Grabbing), we do not want to turn the character
         UngroundedConstraints mouseConstraints = new UngroundedConstraints();        
         var control = viewTarget.transform.root.GetComponent<CharacterControl>();
@@ -121,14 +123,16 @@ public class MouseOrbit : MonoBehaviour
         #region
         //if (Input.GetKeyDown(KeyCode.D))
         //{
-        //	h = transform.eulerAngles.y + 90;
-        //	newRotation = Quaternion.Euler(transform.eulerAngles.x, h, transform.eulerAngles.z);
+        //    h = transform.eulerAngles.y + 90;
+        //    newRotation = Quaternion.Euler(transform.eulerAngles.x, h, transform.eulerAngles.z);
+
+        //    h = new Vector3(0, 360 + Time.deltaTime * keysOrbitingSpeed, 0);
         //}
 
         //if (Input.GetKeyDown(KeyCode.A))
         //{
-        //	h = transform.eulerAngles.y - 90;
-        //	newRotation = Quaternion.Euler(transform.eulerAngles.x, h, transform.eulerAngles.z);
+        //    h = transform.eulerAngles.y - 90;
+        //    newRotation = Quaternion.Euler(transform.eulerAngles.x, h, transform.eulerAngles.z);
         //}
         #endregion
 
