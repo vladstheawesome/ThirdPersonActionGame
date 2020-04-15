@@ -7,8 +7,10 @@ namespace ThirdPersonGame.PooledObjects
     public enum PoolObjectType
     {
         ATTACKINFO,
-        LIGHTSABER,
-        HAMMER,
+        LIGHTSABER_OBJ,
+        HAMMER_OBJ,
+        LIGHTSABER_VFX,
+        HAMMER_VFX
     }
 
     public class PoolObjectLoader : MonoBehaviour
@@ -24,16 +26,22 @@ namespace ThirdPersonGame.PooledObjects
                         obj = Instantiate(Resources.Load("AttackInfo", typeof(GameObject)) as GameObject);
                         break;
                     }
-                case PoolObjectType.LIGHTSABER:
+                case PoolObjectType.LIGHTSABER_OBJ:
                     {
                         obj = Instantiate(Resources.Load("LightSaber", typeof(GameObject)) as GameObject);
                         break;
                     }
-                case PoolObjectType.HAMMER:
+                case PoolObjectType.HAMMER_OBJ:
                     {
                         obj = Instantiate(Resources.Load("ThorHammer", typeof(GameObject)) as GameObject);
                         break;
                     }
+                case PoolObjectType.LIGHTSABER_VFX:
+                    {
+                        obj = Instantiate(Resources.Load("LightSaberVFX", typeof(GameObject)) as GameObject);
+                        break;
+                    }
+
             }
 
             return obj.GetComponent<PoolObject>();

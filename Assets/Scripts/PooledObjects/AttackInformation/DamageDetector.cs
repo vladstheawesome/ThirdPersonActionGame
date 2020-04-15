@@ -53,6 +53,17 @@ namespace ThirdPersonGame.PooledObjects
                     continue;
                 }
 
+                if (info.MustFaceAttacker)
+                {
+                    // vector going from attacker to the target
+                    Vector3 vec = this.transform.position - info.Attacker.transform.position;
+
+                    if (vec.z * info.Attacker.transform.forward.z < 0f) // forward direction < 0 => target is behind attacker
+                    {
+                        continue; // do not register attack
+                    }
+                }
+
                 if (info.MustCollide)
                 {
                     if(IsCollided(info))

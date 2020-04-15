@@ -80,7 +80,7 @@ namespace ThirdPersonGame.Core
                 VirtualInputManager.Instance.Jump = false;
             }
 
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.D))
             {
                 VirtualInputManager.Instance.StrafeRight = true;
             }
@@ -89,7 +89,7 @@ namespace ThirdPersonGame.Core
                 VirtualInputManager.Instance.StrafeRight = false;
             }
 
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKey(KeyCode.A))
             {
                 VirtualInputManager.Instance.StrafeLeft = true;
             }

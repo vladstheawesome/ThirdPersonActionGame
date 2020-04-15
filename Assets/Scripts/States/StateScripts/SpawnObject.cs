@@ -45,12 +45,6 @@ namespace ThirdPersonGame.Control
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            //CharacterControl control = characterState.GetCharacterControl(animator);
-            //if (control.animationProgress.PoolObjectList.Contains(ObjectType))
-            //{
-            //    control.animationProgress.PoolObjectList.Remove(ObjectType);
-            //}
-
             IsSpawned = false;
         }
 
@@ -61,8 +55,8 @@ namespace ThirdPersonGame.Control
             //    return;
             //}
 
-            //GameObject obj = PoolManager.Instance.GetObject(ObjectType);
-            GameObject obj = PoolManager.Instance.GetObject(PoolObjectType.LIGHTSABER);
+            GameObject obj = PoolManager.Instance.GetObject(ObjectType);
+            //GameObject obj = PoolManager.Instance.GetObject(PoolObjectType.LIGHTSABER);
 
             //Debug.Log("Spawning " + ObjectType.ToString() + " | looking for: " + ParentObjectName);
 
@@ -74,10 +68,10 @@ namespace ThirdPersonGame.Control
                 obj.transform.localRotation = Quaternion.identity;
             }
 
-            //if(!StrickToParent)
-            //{
-            //    obj.transform.parent = null;
-            //}
+            if (!StrickToParent)
+            {
+                obj.transform.parent = null;
+            }
 
             obj.SetActive(true);
 
