@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd138a91dd90283489ca90b16bea3a3b, type: 3}
-  m_Name: Player_SaberSlash_Attack
+  m_Script: {fileID: 11500000, guid: 958a6daf5fcae834f89b70fe0489a674, type: 3}
+  m_Name: Death_Uppercut
   m_EditorClassIdentifier: 
-  debug: 0
-  StartAttackTime: 0.3
-  EndAttackTime: 0.45
-  ColliderNames: []
-  deathtype: 4
-  MustCollide: 0
-  MustFaceAttacker: 1
-  LethalRange: 3
-  MaxHits: 100
+  GeneralBodyParts: 
+  Animator: {fileID: 9100000, guid: 32e99774d2fe7774db1735a91fe8c840, type: 2}
+  deathType: 1
+  IsFacingAttacker: 0

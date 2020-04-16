@@ -5,6 +5,15 @@ using UnityEngine;
 
 namespace ThirdPersonGame.Death
 {
+    public enum DeathType
+    {
+        NONE,
+        LAUNCH_INTO_AIR,
+        GROUND_SHOCK,
+        SHOULDER_HIT,
+        SABER_KNOCKOUT,
+    }
+
     [CreateAssetMenu(fileName = "New ScriptableObject", menuName = "ThirdPersonGame/Death/DeathAnimationData")]
     public class DeathAnimationData : ScriptableObject
     {
@@ -13,7 +22,8 @@ namespace ThirdPersonGame.Death
         public List<GeneralBodyPart> GeneralBodyParts = new List<GeneralBodyPart>();
         
         public RuntimeAnimatorController Animator; // The animation of the death
-        public bool LaunchIntoAir;
+        //public bool LaunchIntoAir;
+        public DeathType deathType;
         public bool IsFacingAttacker;
     }
 }

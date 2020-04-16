@@ -4,6 +4,7 @@ using ThirdPersonGame.PooledObjects;
 using ThirdPersonGame.Control;
 using ThirdPersonGame.Core;
 using UnityEngine;
+using ThirdPersonGame.Death;
 
 namespace ThirdPersonGame.States
 {
@@ -14,7 +15,7 @@ namespace ThirdPersonGame.States
         public float StartAttackTime;
         public float EndAttackTime;
         public List<string> ColliderNames = new List<string>(); // List of body parts the attack is using
-        public bool LaunchIntoAir;
+        public DeathType deathtype;
         public bool MustCollide;
         public bool MustFaceAttacker;
         public float LethalRange;

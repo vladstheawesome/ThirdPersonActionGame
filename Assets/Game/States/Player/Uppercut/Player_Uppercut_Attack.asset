@@ -17,7 +17,7 @@ MonoBehaviour:
   EndAttackTime: 0.6
   ColliderNames:
   - hand_r
-  LaunchIntoAir: 1
+  deathtype: 1
   MustCollide: 1
   MustFaceAttacker: 0
   LethalRange: 0

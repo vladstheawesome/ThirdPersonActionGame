@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using ThirdPersonGame.Control;
+using ThirdPersonGame.Death;
 using ThirdPersonGame.States;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace ThirdPersonGame.PooledObjects
         public CharacterControl Attacker = null;
         public Attack AttackAbility;
         public List<string> ColliderNames = new List<string>();
-        public bool LaunchIntoAir;
+        public DeathType deathType;
         public bool MustCollide;
         public bool MustFaceAttacker;
         public float LethalRange;
@@ -34,7 +35,7 @@ namespace ThirdPersonGame.PooledObjects
 
             AttackAbility = attack;
             ColliderNames = attack.ColliderNames;
-            LaunchIntoAir = attack.LaunchIntoAir;
+            deathType = attack.deathtype;
             MustCollide = attack.MustCollide;
             MustFaceAttacker = attack.MustFaceAttacker;
             LethalRange = attack.LethalRange;

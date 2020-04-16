@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 958a6daf5fcae834f89b70fe0489a674, type: 3}
-  m_Name: FallingBackDeath
+  m_Name: Death_SoccerTackle_GroundShock
   m_EditorClassIdentifier: 
-  GeneralBodyParts: 0000000002000000
-  Animator: {fileID: 9100000, guid: 65117f83466ee2743b155f3917309be6, type: 2}
+  GeneralBodyParts: 
+  Animator: {fileID: 9100000, guid: ca3f9f7afbbbc8e43ab75e9be271bd2a, type: 2}
+  deathType: 2
   IsFacingAttacker: 1

@@ -16,7 +16,7 @@ MonoBehaviour:
   StartAttackTime: 0.85
   EndAttackTime: 0.99
   ColliderNames: []
-  LaunchIntoAir: 0
+  deathtype: 2
   MustCollide: 0
   MustFaceAttacker: 0
   LethalRange: 2

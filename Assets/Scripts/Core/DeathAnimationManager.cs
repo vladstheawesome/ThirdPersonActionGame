@@ -33,7 +33,8 @@ namespace ThirdPersonGame.Core
 
             foreach (DeathAnimationData data in deathAnimationLoader.DeathAnimationDataList)
             {
-                if (info.LaunchIntoAir) 
+                #region
+                /*if (info.LaunchIntoAir) 
                 {
                     if (data.LaunchIntoAir)
                     {
@@ -63,7 +64,33 @@ namespace ThirdPersonGame.Core
                             break;
                         }
                     }
-                }                
+                }*/
+                #endregion
+
+                if(info.deathType == data.deathType)
+                {
+                    if (info.deathType != DeathType.NONE)
+                    {
+                        Candidates.Add(data.Animator);
+                    }
+                    else if (!info.MustCollide) // AOE Attack
+                    {                        
+                        Candidates.Add(data.Animator);                           
+                    }
+                    else
+                    {
+                        foreach (GeneralBodyPart part in data.GeneralBodyParts)
+                        {
+                            // if part matches
+                            if (part == generalBodyPart)
+                            {
+                                // add the death animations for that body part
+                                Candidates.Add(data.Animator);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
 
             return Candidates[Random.Range(0, Candidates.Count)];
