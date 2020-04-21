@@ -14,13 +14,14 @@ namespace ThirdPersonGame.States
         {
             animator.SetBool(TransitionParameter.Jump.ToString(), false);
             animator.SetBool(TransitionParameter.Attack.ToString(), false);
+            animator.SetBool(TransitionParameter.Move.ToString(), false);
         }
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
 
-            if (control.Attack)
+            if (control.animationProgress.AttackTriggered)
             {
                 animator.SetBool(TransitionParameter.Attack.ToString(), true);
             }
@@ -30,12 +31,17 @@ namespace ThirdPersonGame.States
                 animator.SetBool(TransitionParameter.Jump.ToString(), true);
             }
 
-            if (control.MoveForward)
+            if (control.MoveForward && control.MoveBackwards)
+            {
+                // do nothing
+            }
+
+            else if (control.MoveForward)
             {
                 animator.SetBool(TransitionParameter.Move.ToString(), true);
             }
 
-            if (control.MoveBackwards)
+            else if (control.MoveBackwards)
             {
                 animator.SetBool(TransitionParameter.MoveBack.ToString(), true);
             }

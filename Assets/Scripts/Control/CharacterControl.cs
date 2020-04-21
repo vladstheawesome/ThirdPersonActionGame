@@ -37,6 +37,7 @@ namespace ThirdPersonGame.Control
         public bool ShimmyRight;
         public bool ShimmyLeft;
         public LedgeChecker ledgeChecker;
+        public AnimationProgress animationProgress;
 
         public GameObject ColliderEdgePrefab;
         public List<GameObject> BottomSpheres = new List<GameObject>();
@@ -85,6 +86,7 @@ namespace ThirdPersonGame.Control
             //}
 
             ledgeChecker = GetComponentInChildren<LedgeChecker>();
+            animationProgress = GetComponent<AnimationProgress>();
 
             RegisterCharacter();
         }

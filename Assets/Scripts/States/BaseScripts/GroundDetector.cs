@@ -55,7 +55,9 @@ namespace ThirdPersonGame.States
                     RaycastHit hit;
                     if (Physics.Raycast(o.transform.position, -Vector3.up, out hit, Distance))
                     {
-                        if (!control.RagdollParts.Contains(hit.collider) && !Ledge.IsLedge(hit.collider.gameObject))
+                        if (!control.RagdollParts.Contains(hit.collider) 
+                            && !Ledge.IsLedge(hit.collider.gameObject)
+                            && !Ledge.IsLedgeChecker(hit.collider.gameObject))
                         {
                             return true;
                         }                        

@@ -1,6 +1,7 @@
 ﻿using System;
 using ThirdPersonGame.Control;
 using ThirdPersonGame.Core;
+using ThirdPersonGame.Interact;
 using UnityEngine;
 
 namespace ThirdPersonGame.PooledObjects
@@ -10,8 +11,11 @@ namespace ThirdPersonGame.PooledObjects
         CharacterControl control;
         GeneralBodyPart DamagedPart;
 
+        public int DamageTaken;
+
         private void Awake()
         {
+            DamageTaken = 0;
             control = GetComponent<CharacterControl>();
         }
 
@@ -75,7 +79,7 @@ namespace ThirdPersonGame.PooledObjects
                 {
                     // distance between target and attacker
                     float dist = Vector3.SqrMagnitude(this.gameObject.transform.position - info.Attacker.transform.position);
-                    Debug.Log(this.gameObject.name + " dist: " + dist.ToString());
+                    // Debug.Log(this.gameObject.name + " dist: " + dist.ToString());
                     if (dist <= info.LethalRange)
                     {
                         TakeDamage(info);
@@ -92,10 +96,13 @@ namespace ThirdPersonGame.PooledObjects
                 {
                     foreach (string name in info.ColliderNames)
                     {
-                        if (name == collider.gameObject.name)
+                        if (name.Equals(collider.gameObject.name))
                         {
-                            DamagedPart = trigger.generalBodyPart;
-                            return true;
+                            if (collider.transform.root.gameObject == info.Attacker.gameObject)
+                            {                           
+                                DamagedPart = trigger.generalBodyPart;
+                                return true;
+                            }
                         }
                     }
                 }
@@ -106,6 +113,11 @@ namespace ThirdPersonGame.PooledObjects
 
         private void TakeDamage(AttackInfo info)
         {
+            if (DamageTaken > 0)
+            {
+                return;
+            }
+
             Debug.Log(info.Attacker.gameObject.name + " hits: " + this.gameObject.name);
             Debug.Log(this.gameObject.name + " hit in " + DamagedPart.ToString());
 
@@ -117,7 +129,10 @@ namespace ThirdPersonGame.PooledObjects
 
             // turn off box collider of dead enemy character
             control.GetComponent<BoxCollider>().enabled = false;
-            control.RIGID_BODY.useGravity = false;
+            control.ledgeChecker.GetComponent<BoxCollider>().enabled = false;
+            control.RIGID_BODY.useGravity = false;           
+
+            DamageTaken++;
         }
     }
 }

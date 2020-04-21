@@ -93,7 +93,7 @@ namespace ThirdPersonGame.States
                         break;
                     case TransitionConditionType.ATTACK:
                         {
-                            if (!control.Attack)
+                            if (!control.animationProgress.AttackTriggered)
                             {
                                 return false;
                             }

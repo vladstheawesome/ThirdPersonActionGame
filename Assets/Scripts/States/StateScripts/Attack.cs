@@ -109,9 +109,9 @@ namespace ThirdPersonGame.States
                 if (stateInfo.normalizedTime < EndAttackTime + ((EndAttackTime - StartAttackTime) / 2f))
                 {
                     CharacterControl control = characterState.GetCharacterControl(animator);
-                    if (control.Attack)
+                    if (control.animationProgress.AttackTriggered)
                     {
-                        Debug.Log("Uppercut triggerd!");
+                        //Debug.Log("Uppercut triggerd!");
                         animator.SetBool(TransitionParameter.Attack.ToString(), true);
                     }
                 }

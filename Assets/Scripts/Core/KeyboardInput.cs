@@ -117,7 +117,7 @@ namespace ThirdPersonGame.Core
             }
 
             // Combat
-            if (Input.GetKey(KeyCode.J))
+            if (Input.GetKey(KeyCode.F))
             {
                 VirtualInputManager.Instance.Attack = true;
             }

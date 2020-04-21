@@ -16,7 +16,7 @@ namespace ThirdPersonGame.Control
         public float SpawnTiming;
         public string ParentObjectName = string.Empty; // Body name we want to attach the Weapon to
         public bool StrickToParent;
-        public bool IsSpawned;
+        //public bool IsSpawned;
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -24,7 +24,6 @@ namespace ThirdPersonGame.Control
             {
                 CharacterControl control = characterState.GetCharacterControl(animator);
                 SpawnObj(control);
-                IsSpawned = true;
             }
         }
 
@@ -32,28 +31,31 @@ namespace ThirdPersonGame.Control
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
 
-            //if (!control.animationProgress.PoolObjectList.Contains(ObjectType))
-            if (!IsSpawned)
+            if (!control.animationProgress.PoolObjectList.Contains(ObjectType))
+            //if (!IsSpawned)
             {
                 if (stateInfo.normalizedTime >= SpawnTiming)
                 {
                     SpawnObj(control);
-                    IsSpawned = true;
                 }
             }
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            IsSpawned = false;
+            CharacterControl control = characterState.GetCharacterControl(animator);
+            if (control.animationProgress.PoolObjectList.Contains(ObjectType))
+            {
+                control.animationProgress.PoolObjectList.Remove(ObjectType);
+            }
         }
 
         private void SpawnObj(CharacterControl control)
         {
-            //if (control.animationProgress.PoolObjectList.Contains(ObjectType))
-            //{
-            //    return;
-            //}
+            if (control.animationProgress.PoolObjectList.Contains(ObjectType))
+            {
+                return;
+            }
 
             GameObject obj = PoolManager.Instance.GetObject(ObjectType);
             //GameObject obj = PoolManager.Instance.GetObject(PoolObjectType.LIGHTSABER);
@@ -75,7 +77,7 @@ namespace ThirdPersonGame.Control
 
             obj.SetActive(true);
 
-            //control.animationProgress.PoolObjectList.Add(ObjectType);
+            control.animationProgress.PoolObjectList.Add(ObjectType);
         }
     }
 }
