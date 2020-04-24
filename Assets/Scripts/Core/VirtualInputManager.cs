@@ -7,7 +7,8 @@ namespace ThirdPersonGame.Core
     public class VirtualInputManager : Singleton<VirtualInputManager>
     {
         //public static VirtualInputManager Instance = null;
-        
+
+        public bool Turbo;
         public bool MoveForward;
         public bool MoveBackwards;
         public bool Jump;
@@ -18,5 +19,6 @@ namespace ThirdPersonGame.Core
         public bool MoveDown;
         public bool ShimmyRight;
         public bool ShimmyLeft;
+        public bool Crouch;
     }
 }

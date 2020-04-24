@@ -218,6 +218,36 @@ Transform:
   m_Father: {fileID: 1424448193}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &113439582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 113439583}
+  m_Layer: 0
+  m_Name: CameraOffsetPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &113439583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113439582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: 1.5, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6895781}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &125027270
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +453,7 @@ MonoBehaviour:
   minVerticalAngle: -60
   maxVerticalAngle: 60
   useRMBToAim: 0
+  horizontalOffset: 0
   angularSpeed: 150
 --- !u!114 &273901005
 MonoBehaviour:
@@ -1070,6 +1101,90 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1789338668
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4493174212762461663, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerAisha - Tank Top (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174212762461635, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493174214542222543, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803664005150200568, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: DefaultClothes
+      value: 
+      objectReference: {fileID: 854191076}
+    - target: {fileID: 8803664004324186453, guid: 0ad5725d443aad84282e584f1a874ba9,
+        type: 3}
+      propertyPath: DefaultClothes
+      value: 
+      objectReference: {fileID: 1107527468}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ad5725d443aad84282e584f1a874ba9, type: 3}
 --- !u!1 &1889496013
 GameObject:
   m_ObjectHideFlags: 0

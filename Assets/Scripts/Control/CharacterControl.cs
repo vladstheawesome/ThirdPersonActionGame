@@ -10,6 +10,8 @@ namespace ThirdPersonGame.Control
 {
     public enum TransitionParameter 
     { 
+        Crouch,
+        Turbo,
         Move, 
         MoveBack, 
         Jump,
@@ -26,6 +28,8 @@ namespace ThirdPersonGame.Control
     public class CharacterControl : MonoBehaviour
     {
         public Animator SkinnedMeshAnimator;
+        public bool Turbo;
+        public bool Crouch;
         public bool MoveForward;
         public bool MoveBackwards;
         public bool Jump;

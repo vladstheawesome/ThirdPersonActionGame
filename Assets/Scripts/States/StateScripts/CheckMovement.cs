@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace ThirdPersonGame.States
 {
-    [CreateAssetMenu(fileName = "New State", menuName = "ThirdPersonGame/AbilityData/CheckAttack")]
-    public class CheckAttack : StateData
+    [CreateAssetMenu(fileName = "New State", menuName = "ThirdPersonGame/AbilityData/CheckMovement")]
+    public class CheckMovement : StateData
     {
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -19,16 +19,20 @@ namespace ThirdPersonGame.States
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
 
-            if (control.animationProgress.AttackTriggered)
+            if (control.MoveForward)
             {
-                animator.SetBool(TransitionParameter.Attack.ToString(), true);
+                animator.SetBool(TransitionParameter.Move.ToString(), true);
             }
-            
+            else
+            {
+                animator.SetBool(TransitionParameter.Move.ToString(), false);
+            }
+
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            
+
         }
     }
 }

@@ -12,6 +12,7 @@ namespace ThirdPersonGame.Core
         //private CharacterControl characterControl;
         CharacterControl control;
         public Transform Player;
+        public bool toggleCrouch;
 
         private void Awake()
         {
@@ -25,6 +26,29 @@ namespace ThirdPersonGame.Core
             var ledge = control.ledgeChecker;
 
             // Control
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                VirtualInputManager.Instance.Turbo = true;
+            }
+            else
+            {
+                VirtualInputManager.Instance.Turbo = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                toggleCrouch = !toggleCrouch;
+
+                if (toggleCrouch)
+                {
+                    VirtualInputManager.Instance.Crouch = true;
+                }
+                else
+                {
+                    VirtualInputManager.Instance.Crouch = false;
+                }
+            }
+
             if (Input.GetKey(KeyCode.W) || (Input.GetMouseButton(0) && Input.GetMouseButton(1)))
             {
                 if (checkGround.IsGrounded(control) || VirtualInputManager.Instance.Jump == true)

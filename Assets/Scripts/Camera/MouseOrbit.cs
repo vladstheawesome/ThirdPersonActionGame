@@ -24,6 +24,8 @@ public class MouseOrbit : MonoBehaviour
     public float maxVerticalAngle = 60.0f;
     public bool useRMBToAim = false;
 
+    public float horizontalOffset = 1.5f;
+
     /* These variables are meant to store values given by the script and
      * not the user */
     private float h, v, smoothDistance;
@@ -33,7 +35,6 @@ public class MouseOrbit : MonoBehaviour
     public static float timerot = 0;
 
     // player rotate variables
-
     public float angularSpeed;
     
 
@@ -145,7 +146,8 @@ public class MouseOrbit : MonoBehaviour
         smoothRotation = Quaternion.Slerp(smoothRotation, newRotation, TimeSignature((1 / rotationDampening) * 100.0f));
 
         newPosition = viewTarget.position;
-        newPosition += smoothRotation * new Vector3(0.0f, height, -smoothDistance);
+        //newPosition += smoothRotation * new Vector3(0.0f, height, -smoothDistance);
+        newPosition += smoothRotation * new Vector3(horizontalOffset, height, -smoothDistance);
 
         /* Calls the function to adjust the camera position to avoid clipping */
         CheckSphere();

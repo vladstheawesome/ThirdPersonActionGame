@@ -32,11 +32,7 @@ public class HangbraceShimmyRight : StateData
             animator.SetBool(TransitionParameter.ShimmyRight.ToString(), true);
 
             var localY = control.ledgeChecker.GrabbedLedge.Offset_HangingBrace.y;
-
-            var ledgeY = control.transform.root.position.y;
-            var newLocal = control.ledgeChecker.transform.position.y - (control.ledgeChecker.transform.position.y - localY);
-
-            control.SkinnedMeshAnimator.transform.localPosition = VectorPosition.ChangeY(control.SkinnedMeshAnimator.transform.localPosition, newLocal);
+            control.SkinnedMeshAnimator.transform.localPosition = VectorPosition.ChangeY(control.SkinnedMeshAnimator.transform.localPosition, localY);
             
             control.PlayerStrafeOrShimmyRight(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
             control.SkinnedMeshAnimator.transform.position = control.transform.position;

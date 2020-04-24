@@ -18,6 +18,24 @@ namespace ThirdPersonGame.Core
         void Update()
         {
             // Control
+            if (VirtualInputManager.Instance.Turbo)
+            {
+                characterControl.Turbo = true;
+            }
+            else
+            {
+                characterControl.Turbo = false;
+            }
+
+            if (VirtualInputManager.Instance.Crouch)
+            {
+                characterControl.Crouch = true;
+            }
+            else
+            {
+                characterControl.Crouch = false;
+            }
+
             if (VirtualInputManager.Instance.MoveUp)
             {
                 characterControl.MoveUp = true;

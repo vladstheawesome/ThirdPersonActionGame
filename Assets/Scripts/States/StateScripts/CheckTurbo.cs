@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using ThirdPersonGame.Control;
-using ThirdPersonGame.Core;
 using UnityEngine;
 
 namespace ThirdPersonGame.States
 {
-    [CreateAssetMenu(fileName = "New State", menuName = "ThirdPersonGame/AbilityData/CheckAttack")]
-    public class CheckAttack : StateData
+    [CreateAssetMenu(fileName = "New State", menuName = "ThirdPersonGame/AbilityData/CheckTurbo")]
+    public class CheckTurbo : StateData
     {
-
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
 
@@ -19,16 +17,20 @@ namespace ThirdPersonGame.States
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
 
-            if (control.animationProgress.AttackTriggered)
+            if (control.Turbo)
             {
-                animator.SetBool(TransitionParameter.Attack.ToString(), true);
+                animator.SetBool(TransitionParameter.Turbo.ToString(), true);
             }
-            
+            else
+            {
+                animator.SetBool(TransitionParameter.Turbo.ToString(), false);
+            }
+
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            
+
         }
     }
 }
