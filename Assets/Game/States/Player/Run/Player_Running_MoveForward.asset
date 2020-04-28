@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5ca9f637ab8a24fa72acbaec9d64de, type: 3}
   m_Name: Player_Running_MoveForward
   m_EditorClassIdentifier: 
+  AllowEarlyTurn: 0
+  LockDirection: 1
   Constant: 0
   SpeedGraph:
     serializedVersion: 2

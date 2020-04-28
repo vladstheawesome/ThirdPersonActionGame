@@ -1,0 +1,44 @@
+{
+    "name": "GameController",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "ee6c2e0d-b367-4fcb-9410-a8a65e89f470",
+            "actions": [
+                {
+                    "name": "PlayerController",
+                    "type": "Button",
+                    "id": "e614cafa-1712-4cdf-80c1-d833c1ab5b89",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6f571848-c9fc-4335-8fc0-9ac2c468ebcf",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerController",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9974d95-8699-4a1f-abc2-548030e3f255",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerController",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

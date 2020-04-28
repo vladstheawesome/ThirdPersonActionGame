@@ -10,6 +10,8 @@ namespace ThirdPersonGame.States
     [CreateAssetMenu(fileName = "New State", menuName = "ThirdPersonGame/AbilityData/MoveForward")]
     public class MoveForward : StateData
     {
+        public bool AllowEarlyTurn;
+        public bool LockDirection;
         public bool Constant;
         public AnimationCurve SpeedGraph;
         public float Speed;
@@ -17,12 +19,24 @@ namespace ThirdPersonGame.States
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            
+            CharacterControl control = characterState.GetCharacterControl(animator);
+
+            #region
+            //if (AllowEarlyTurn /*&& !control.animationProgress.disallowEarlyTurn*/)
+            //{
+            //    if (control.MoveForward)
+            //    {
+            //        control.FaceForward(true);
+            //    }
+            //}
+
+            //control.animationProgress.disallowEarlyTurn = false;
+            #endregion
         }
 
-        public override void UpdateAbility(CharacterState characterStateBase, Animator animator, AnimatorStateInfo stateInfo)
+        public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterStateBase.GetCharacterControl(animator);
+            CharacterControl control = characterState.GetCharacterControl(animator);
 
             if (control.Jump)
             {
@@ -70,10 +84,22 @@ namespace ThirdPersonGame.States
 
             if (control.MoveForward)
             {
-                //control.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 if (!CheckFront(control))
                 {
                     control.PlayerMoveForward(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
+                }
+            }
+
+            //CheckTurn(control);
+        }
+
+        private void CheckTurn(CharacterControl control)
+        {
+            if (!LockDirection)
+            {
+                if (control.MoveForward)
+                {
+                    control.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 }
             }
         }

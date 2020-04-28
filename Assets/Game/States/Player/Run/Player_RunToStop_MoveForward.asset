@@ -10,34 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de5ca9f637ab8a24fa72acbaec9d64de, type: 3}
-  m_Name: Player_Walk_MoveForward
+  m_Name: Player_RunToStop_MoveForward
   m_EditorClassIdentifier: 
-  AllowEarlyTurn: 1
   LockDirection: 1
-  Constant: 0
+  Constant: 1
   SpeedGraph:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -1.6666666
+      outSlope: -1.6666666
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      time: 0.6
+      value: 0
+      inSlope: -1.6666666
+      outSlope: -1.6666666
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Speed: 3.5
+  Speed: 3
   BlockDistance: 0.1
