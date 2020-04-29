@@ -65,6 +65,11 @@ namespace ThirdPersonGame.States
                 }
             }
 
+            if (control.isNpc)
+            {
+                return true;
+            }
+
             return false;
         }
     }

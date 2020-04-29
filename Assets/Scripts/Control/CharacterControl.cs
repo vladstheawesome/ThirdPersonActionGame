@@ -43,6 +43,8 @@ namespace ThirdPersonGame.Control
         public LedgeChecker ledgeChecker;
         public AnimationProgress animationProgress;
 
+        public bool isNpc = false;
+
         public GameObject ColliderEdgePrefab;
         public List<GameObject> BottomSpheres = new List<GameObject>();
         public List<GameObject> FrontSpheres = new List<GameObject>();
