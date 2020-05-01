@@ -8,6 +8,8 @@ namespace ThirdPersonGame.States
     [CreateAssetMenu(fileName = "New State", menuName = "ThirdPersonGame/AbilityData/CheckCrouch")]
     public class CheckCrouch : StateData
     {
+        public bool MustRequireMovement;
+
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
 
@@ -19,7 +21,17 @@ namespace ThirdPersonGame.States
 
             if (control.Crouch)
             {
-                animator.SetBool(TransitionParameter.Crouch.ToString(), true);
+                if (MustRequireMovement)
+                {
+                    if (control.MoveForward)
+                    {
+                        animator.SetBool(TransitionParameter.Crouch.ToString(), true);
+                    }
+                }
+                else
+                {
+                    animator.SetBool(TransitionParameter.Crouch.ToString(), true);
+                }
             }
             else
             {

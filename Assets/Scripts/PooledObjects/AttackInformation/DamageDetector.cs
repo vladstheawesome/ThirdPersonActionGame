@@ -3,6 +3,7 @@ using ThirdPersonGame.Control;
 using ThirdPersonGame.Core;
 using ThirdPersonGame.Interact;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace ThirdPersonGame.PooledObjects
 {
@@ -10,6 +11,7 @@ namespace ThirdPersonGame.PooledObjects
     {
         CharacterControl control;
         GeneralBodyPart DamagedPart;
+        NavMeshAgent navMeshAgent;
 
         public int DamageTaken;
 
@@ -17,6 +19,7 @@ namespace ThirdPersonGame.PooledObjects
         {
             DamageTaken = 0;
             control = GetComponent<CharacterControl>();
+            navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         private void Update()
@@ -130,7 +133,8 @@ namespace ThirdPersonGame.PooledObjects
             // turn off box collider of dead enemy character
             control.GetComponent<BoxCollider>().enabled = false;
             control.ledgeChecker.GetComponent<BoxCollider>().enabled = false;
-            control.RIGID_BODY.useGravity = false;           
+            control.RIGID_BODY.useGravity = false;
+            navMeshAgent.isStopped = true;
 
             DamageTaken++;
         }

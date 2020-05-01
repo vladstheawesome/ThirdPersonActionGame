@@ -1,5 +1,96 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &586793628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586793629}
+  - component: {fileID: 586793630}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586793629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586793628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.25, z: -0.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4493174212762461635}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &586793630
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586793628}
+  m_Enabled: 1
+  serializedVersion: 9
+  m_Type: 0
+  m_Color: {r: 0.96726805, g: 0.990566, b: 0.54668033, a: 1}
+  m_Intensity: 15
+  m_Range: 15
+  m_SpotAngle: 70
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.02
+    m_NormalBias: 0.1
+    m_NearPlane: 0.1
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &1406903889
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1406903890
 Transform:
   m_ObjectHideFlags: 0
@@ -94,9 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolPath: {fileID: 0}
-  waypointTolerance: 1
+  waypointTolerance: 0.1
   waypointDwellTime: 3
   patrolSpeedFraction: 0.2
+  turnSpeed: 90
 --- !u!114 &4041213432727754148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +218,7 @@ PrefabInstance:
     - target: {fileID: 7719719362626155116, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.95
+      value: 7.39
       objectReference: {fileID: 0}
     - target: {fileID: 7719719362626155116, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
@@ -136,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 7719719362626155116, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.31
+      value: -6.98
       objectReference: {fileID: 0}
     - target: {fileID: 7719719362626155116, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
@@ -217,6 +309,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658379189732816878, guid: da7f549e54536344487a4790e0bb1dc2,
+        type: 3}
+      propertyPath: m_Speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3411441794331483916, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
@@ -313,7 +410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1296194286, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.08407117
+      value: -0.08407164
       objectReference: {fileID: 0}
     - target: {fileID: 1296194286, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -325,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1992555243, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.08407115
+      value: 0.08407163
       objectReference: {fileID: 0}
     - target: {fileID: 1992555243, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -337,15 +434,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2074874658, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.00000031292439
+      value: -0.00000010430813
       objectReference: {fileID: 0}
     - target: {fileID: 2074874658, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.23373716
+      value: 0.23373736
       objectReference: {fileID: 0}
     - target: {fileID: 2074874658, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.00000013783574
+      value: -0.00000016763806
       objectReference: {fileID: 0}
     - target: {fileID: 2031631299, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -369,17 +466,17 @@ PrefabInstance:
     - target: {fileID: 3981953807954908979, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.0000001434237
+      value: -0.0000002495945
       objectReference: {fileID: 0}
     - target: {fileID: 3981953807954908979, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.26739967
+      value: 0.26739943
       objectReference: {fileID: 0}
     - target: {fileID: 3981953807954908979, guid: da7f549e54536344487a4790e0bb1dc2,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.00000010803343
+      value: 0.00000018998983
       objectReference: {fileID: 0}
     - target: {fileID: 1859095869, guid: da7f549e54536344487a4790e0bb1dc2, type: 3}
       propertyPath: m_ConnectedAnchor.x

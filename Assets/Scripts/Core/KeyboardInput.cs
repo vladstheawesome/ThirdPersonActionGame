@@ -38,8 +38,7 @@ namespace ThirdPersonGame.Core
             if (Input.GetKeyDown(KeyCode.C))
             {
                 toggleCrouch = !toggleCrouch;
-
-                if (toggleCrouch)
+                if(toggleCrouch)
                 {
                     VirtualInputManager.Instance.Crouch = true;
                 }
@@ -59,7 +58,7 @@ namespace ThirdPersonGame.Core
                 {
                     VirtualInputManager.Instance.MoveUp = true;
                 }
-            }
+            }            
             else
             {
                 if (checkGround.IsGrounded(control) || VirtualInputManager.Instance.Jump == true)

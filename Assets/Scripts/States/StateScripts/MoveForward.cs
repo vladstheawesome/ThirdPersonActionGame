@@ -43,6 +43,11 @@ namespace ThirdPersonGame.States
                 animator.SetBool(TransitionParameter.Jump.ToString(), true);
             }
 
+            if (control.Crouch)
+            {
+                animator.SetBool(TransitionParameter.Crouch.ToString(), true);
+            }
+
             if (Constant)
             {
                 ConstantMove(animator, stateInfo, control);
@@ -80,7 +85,7 @@ namespace ThirdPersonGame.States
                 animator.SetBool(TransitionParameter.Move.ToString(), false);
                 animator.SetBool(TransitionParameter.MoveBack.ToString(), false);
                 return;
-            }
+            }            
 
             if (control.MoveForward)
             {
@@ -88,6 +93,17 @@ namespace ThirdPersonGame.States
                 {
                     control.PlayerMoveForward(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
                 }
+            }    
+            
+            if (control.MoveForward && !control.Crouch)
+            {
+                animator.SetBool(TransitionParameter.Crouch.ToString(), false);
+            }
+
+            if (!control.MoveForward && !control.Crouch)
+            {
+                animator.SetBool(TransitionParameter.Move.ToString(), false);
+                animator.SetBool(TransitionParameter.Crouch.ToString(), false);
             }
 
             //CheckTurn(control);
