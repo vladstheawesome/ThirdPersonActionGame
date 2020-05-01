@@ -55,6 +55,11 @@ namespace ThirdPersonGame.States
             {
                 animator.SetBool(TransitionParameter.StrafeLeft.ToString(), true);
             }
+
+            if (!control.MoveForward && control.Crouch)
+            {
+                VirtualInputManager.Instance.Crouch = false;
+            }
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)

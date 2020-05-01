@@ -45,8 +45,12 @@ namespace ThirdPersonGame.Control
 
         private void UpdateAnimator()
         {
-            var isIdle = GetComponent<AIController>().GetWayPointIdle();
+            var isIdle = GetComponent<PatrolPathController>().GetWayPointIdle();
             if (!isIdle)
+            {
+                control.SkinnedMeshAnimator.SetBool(TransitionParameter.Move.ToString(), false);
+            }
+            if (isIdle)
             {
                 control.SkinnedMeshAnimator.SetBool(TransitionParameter.Move.ToString(), true);
             }

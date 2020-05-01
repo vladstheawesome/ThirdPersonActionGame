@@ -104,7 +104,7 @@ namespace ThirdPersonGame.States
             {
                 animator.SetBool(TransitionParameter.Move.ToString(), false);
                 animator.SetBool(TransitionParameter.Crouch.ToString(), false);
-            }
+            }            
 
             //CheckTurn(control);
         }

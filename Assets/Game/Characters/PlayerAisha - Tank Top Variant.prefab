@@ -193,13 +193,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4493174212762461663}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f538143636341e64d921ff4c1c04cb41, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a4c489c66df5214f95b3dcb197b68d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPath: {fileID: 0}
-  waypointTolerance: 0.1
+  defaultPatrolPath: {fileID: 0}
+  patrolPaths:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  waypointTolerance: 1
   waypointDwellTime: 3
   patrolSpeedFraction: 0.2
   turnSpeed: 90
@@ -233,7 +237,7 @@ MonoBehaviour:
   viewDistance: 11
   viewMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483648
 --- !u!1001 &6159523478181484463
 PrefabInstance:
   m_ObjectHideFlags: 0

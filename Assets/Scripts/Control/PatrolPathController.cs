@@ -5,9 +5,11 @@ using UnityEngine;
 
 namespace ThirdPersonGame.Control
 {
-    public class AIController : MonoBehaviour
+    public class PatrolPathController : MonoBehaviour
     {
-        [SerializeField] PatrolPath patrolPath;
+        [SerializeField] PatrolPath defaultPatrolPath;
+        
+        [SerializeField] List<PatrolPath> patrolPaths;
         [SerializeField] float waypointTolerance = 1f;
         [SerializeField] float waypointDwellTime = 3f;
         [Range(0, 1)]
@@ -17,6 +19,8 @@ namespace ThirdPersonGame.Control
 
         Mover mover;
         CharacterControl control;
+        private PatrolPath selectedPatrolPath;
+        PatrolPath activePath;
 
         LazyValue<Vector3> guardPosition;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
@@ -28,6 +32,16 @@ namespace ThirdPersonGame.Control
             mover = GetComponent<Mover>();
             control = this.GetComponent<CharacterControl>();
             guardPosition = new LazyValue<Vector3>(GetGuardPosition);
+            selectedPatrolPath = SelectPatrolPath(patrolPaths);
+        }
+
+        private PatrolPath SelectPatrolPath(List<PatrolPath> patrolPaths)
+        {
+            var random = new System.Random();
+            int r = random.Next(patrolPaths.Count);
+            var selectedPath = patrolPaths[r];
+
+            return selectedPath;
         }
 
         private Vector3 GetGuardPosition()
@@ -56,7 +70,17 @@ namespace ThirdPersonGame.Control
         {
             Vector3 nextPosition = guardPosition.value;
 
-            if (patrolPath != null)
+            // Random path from list OR default assigned path
+            if (selectedPatrolPath != null)
+            {
+                activePath = selectedPatrolPath;
+            }
+            else
+            {
+                activePath = defaultPatrolPath;
+            }
+
+            if (activePath != null)
             {
                 if (AtWaypoint())
                 {
@@ -72,13 +96,11 @@ namespace ThirdPersonGame.Control
             if (timeSinceArrivedAtWaypoint > waypointDwellTime)
             {
                 mover.StartMoveAction(nextPosition, patrolSpeedFraction);
-                //control.SkinnedMeshAnimator.SetBool(TransitionParameter.Move.ToString(), true);
-                SetWayPointIdle(false);
+                SetWayPointIdle(true);
             }
             else
             {
-                //control.SkinnedMeshAnimator.SetBool(TransitionParameter.Move.ToString(), false);
-                SetWayPointIdle(true);
+                SetWayPointIdle(false);
             }
         }
 
@@ -101,12 +123,12 @@ namespace ThirdPersonGame.Control
 
         private void CycleWaypoint()
         {
-            currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
+            currentWaypointIndex = activePath.GetNextIndex(currentWaypointIndex);
         }
 
         private Vector3 GetCurrentWaypoint()
         {
-            return patrolPath.GetWaypoint(currentWaypointIndex);
+            return activePath.GetWaypoint(currentWaypointIndex);
         }
 
         //IEnumerator TurnBeforeMoving()
