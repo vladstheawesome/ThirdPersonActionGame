@@ -1805,7 +1805,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListAbilityData:
-  - {fileID: 11400000, guid: 4411b156742c4e248af1a744f1f3b1b6, type: 2}
   - {fileID: 11400000, guid: 709b7172a68979b479a62f67a2684833, type: 2}
   - {fileID: 11400000, guid: dfbafb07addca3e45a474408bcc38298, type: 2}
   - {fileID: 11400000, guid: 7842e620051019448af9f8e68f857717, type: 2}

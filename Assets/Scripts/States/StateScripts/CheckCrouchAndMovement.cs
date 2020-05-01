@@ -29,7 +29,7 @@ namespace ThirdPersonGame.States
             }      
             else if (!control.MoveForward && control.Crouch)
             {
-                control.Crouch = false;
+                //control.Crouch = false;
                 ThirdPersonGame.Core.VirtualInputManager.Instance.Crouch = false;
             }
             else
