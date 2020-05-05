@@ -269,7 +269,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483648
   GuardVision: {fileID: 1259232473}
-  PlayerMidSection: {fileID: 0}
 --- !u!1001 &6159523478181484463
 PrefabInstance:
   m_ObjectHideFlags: 0

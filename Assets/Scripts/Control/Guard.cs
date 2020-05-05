@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using ThirdPersonGame.Interact;
 using UnityEditor;
@@ -59,18 +60,44 @@ namespace ThirdPersonGame.Control
                     //    return true;
                     //}    
 
-                    var isIdle = GetComponent<PatrolPathController>().GetWayPointIdle();
-                    Vector3 faceViewPoint;  
+                    var hasPatrolPath = GuardHasPatrolPath(this.transform);
 
-                    if (!Physics.Linecast(originPoint, player.position / 2 /*playerMidSection*/, viewMask)
-                        || !Physics.Linecast(originPoint, player.position, viewMask)
-                        || !Physics.Linecast(originPointUpdate, player.position, viewMask))
+                    if (hasPatrolPath == true)
                     {
-                        return true;
+                        originPoint = originPointUpdate;
+
+                        if (Physics.Linecast(originPoint, player.position / 2, viewMask))
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (!Physics.Linecast(originPoint, player.position / 2 /*playerMidSection*/, viewMask)
+                            || !Physics.Linecast(originPoint, player.position, viewMask)
+                            || !Physics.Linecast(originPointUpdate, player.position, viewMask)
+                            )
+                        {
+                            return true;
+                        }
                     }
                 }
             }
             return false;
+        }
+
+        private bool GuardHasPatrolPath(Transform transform)
+        {
+            var patrolPathExists = transform.GetComponent<PatrolPathController>();
+
+            if (patrolPathExists.enabled == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void OnDrawGizmos()
