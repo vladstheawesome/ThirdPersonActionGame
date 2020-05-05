@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ThirdPersonGame.Interact;
+using UnityEditor;
 using UnityEngine;
 
 namespace ThirdPersonGame.Control
@@ -9,21 +11,28 @@ namespace ThirdPersonGame.Control
         public Light spotLight;
         public float viewDistance;
         public LayerMask viewMask;
+        public GameObject GuardVision;
 
         float viewAngle;
         Transform player;
-        Color originalSpotLightColor;
+        Color originalSpotLightColor;        
+        Vector3 originPoint;
+        Vector3 originPointUpdate;
 
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
             viewAngle = spotLight.spotAngle;
             originalSpotLightColor = spotLight.color;
+
+            originPoint = GuardVision.transform.position;            
         }
 
         void Update()
         {
-            if(CanSeePlayer())
+            originPointUpdate = GuardVision.transform.position;
+
+            if (CanSeePlayer())
             {
                 spotLight.color = Color.red;
             }
@@ -41,10 +50,21 @@ namespace ThirdPersonGame.Control
                 // Check 2: Player is within view angle of Guard
                 Vector3 dirToPlayer = (player.position - this.transform.position).normalized;
                 float angleBetweenGuardAndPlayer = Vector3.Angle(transform.forward, dirToPlayer);
+
                 if (angleBetweenGuardAndPlayer < viewAngle / 2f)
                 {
                     // Check 3: Is player in line of sight of guard
-                    if(!Physics.Linecast(transform.position, player.position, viewMask))
+                    //if (!Physics.Linecast(transform.position, player.position, viewMask))
+                    //{
+                    //    return true;
+                    //}    
+
+                    var isIdle = GetComponent<PatrolPathController>().GetWayPointIdle();
+                    Vector3 faceViewPoint;  
+
+                    if (!Physics.Linecast(originPoint, player.position / 2 /*playerMidSection*/, viewMask)
+                        || !Physics.Linecast(originPoint, player.position, viewMask)
+                        || !Physics.Linecast(originPointUpdate, player.position, viewMask))
                     {
                         return true;
                     }
@@ -57,6 +77,8 @@ namespace ThirdPersonGame.Control
         {
             Gizmos.color = Color.red;
             Gizmos.DrawRay(transform.position, transform.forward * viewDistance);
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(originPointUpdate, transform.forward * viewDistance);
         }
     }
 }
