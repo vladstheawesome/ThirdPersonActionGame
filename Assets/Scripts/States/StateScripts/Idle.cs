@@ -15,6 +15,7 @@ namespace ThirdPersonGame.States
             animator.SetBool(TransitionParameter.Jump.ToString(), false);
             animator.SetBool(TransitionParameter.Attack.ToString(), false);
             animator.SetBool(TransitionParameter.Move.ToString(), false);
+            //animator.SetBool(TransitionParameter.CrouchOnWall.ToString(), false);
         }
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -59,6 +60,17 @@ namespace ThirdPersonGame.States
             if (!control.MoveForward && control.Crouch)
             {
                 VirtualInputManager.Instance.Crouch = false;
+            }
+
+            //if (control.CrouchOnWall)
+            //{
+            //    //VirtualInputManager.Instance.CrouchOnWall = true;
+            //    animator.SetBool(TransitionParameter.CrouchOnWall.ToString(), true);
+            //}
+            if (!control.CrouchOnWall)
+            {
+                //VirtualInputManager.Instance.CrouchOnWall = false;
+                animator.SetBool(TransitionParameter.CrouchOnWall.ToString(), false);
             }
         }
 

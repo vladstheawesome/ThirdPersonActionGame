@@ -36,6 +36,15 @@ namespace ThirdPersonGame.Core
                 characterControl.Crouch = false;
             }
 
+            if (VirtualInputManager.Instance.CrouchOnWall)
+            {
+                characterControl.CrouchOnWall = true;
+            }
+            else
+            {
+                characterControl.CrouchOnWall = false;
+            }
+
             if (VirtualInputManager.Instance.MoveUp)
             {
                 characterControl.MoveUp = true;

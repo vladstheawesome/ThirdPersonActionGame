@@ -20,5 +20,6 @@ namespace ThirdPersonGame.Core
         public bool ShimmyRight;
         public bool ShimmyLeft;
         public bool Crouch;
+        public bool CrouchOnWall;
     }
 }

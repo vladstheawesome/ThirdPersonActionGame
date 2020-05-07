@@ -104,7 +104,8 @@ namespace ThirdPersonGame.States
             {
                 animator.SetBool(TransitionParameter.Move.ToString(), false);
                 animator.SetBool(TransitionParameter.Crouch.ToString(), false);
-            }            
+            }   
+            
 
             //CheckTurn(control);
         }
@@ -134,7 +135,10 @@ namespace ThirdPersonGame.States
                     {
                         if(!IsBodyPart(hit.collider) 
                             && !Ledge.IsLedge(hit.collider.gameObject)
-                            && !Ledge.IsLedgeChecker(hit.collider.gameObject))
+                            && !Ledge.IsLedgeChecker(hit.collider.gameObject)
+                            && !ShortWall.IsShortWall(hit.collider.gameObject)
+                            && !ShortWall.IsShortWallChecker(hit.collider.gameObject)
+                            )
                         {
                             return true;
                         }

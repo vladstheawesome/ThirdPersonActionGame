@@ -11,6 +11,7 @@ namespace ThirdPersonGame.Control
     public enum TransitionParameter 
     { 
         Crouch,
+        CrouchOnWall,
         Turbo,
         Move, 
         MoveBack, 
@@ -30,6 +31,7 @@ namespace ThirdPersonGame.Control
         public Animator SkinnedMeshAnimator;
         public bool Turbo;
         public bool Crouch;
+        public bool CrouchOnWall;
         public bool MoveForward;
         public bool MoveBackwards;
         public bool Jump;
@@ -41,6 +43,7 @@ namespace ThirdPersonGame.Control
         public bool ShimmyRight;
         public bool ShimmyLeft;
         public LedgeChecker ledgeChecker;
+        public ShortWallChecker shortWallChecker;
         public AnimationProgress animationProgress;
 
         public bool isNpc = false;
@@ -93,6 +96,7 @@ namespace ThirdPersonGame.Control
 
             ledgeChecker = GetComponentInChildren<LedgeChecker>();
             animationProgress = GetComponent<AnimationProgress>();
+            shortWallChecker = GetComponentInChildren<ShortWallChecker>();
 
             RegisterCharacter();
         }

@@ -122,7 +122,10 @@ namespace ThirdPersonGame.States
                         break;
                     case TransitionConditionType.CROUCHING_ON_WALL:
                         {
-
+                            if (!control.shortWallChecker.IsCrouchingOnWall)
+                            {
+                                return false;
+                            }
                         }
                         break;                    
                     //case TransitionConditionType.SHIMMY_LEFT:

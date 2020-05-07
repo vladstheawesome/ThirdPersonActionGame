@@ -25,13 +25,13 @@ namespace ThirdPersonGame.Control
             player = GameObject.FindGameObjectWithTag("Player").transform;
             viewAngle = spotLight.spotAngle;
             originalSpotLightColor = spotLight.color;
-
             originPoint = GuardVision.transform.position;            
         }
 
         void Update()
         {
             originPointUpdate = GuardVision.transform.position;
+            //originPoint = GuardVision.transform.position;
 
             if (CanSeePlayer())
             {
@@ -40,6 +40,7 @@ namespace ThirdPersonGame.Control
             else
             {
                 spotLight.color = originalSpotLightColor;
+                //spotLight.color = Color.clear;
             }
         }
 
@@ -55,10 +56,13 @@ namespace ThirdPersonGame.Control
                 if (angleBetweenGuardAndPlayer < viewAngle / 2f)
                 {
                     // Check 3: Is player in line of sight of guard
+
+                    #region
                     //if (!Physics.Linecast(transform.position, player.position, viewMask))
                     //{
                     //    return true;
                     //}    
+                    #endregion
 
                     var hasPatrolPath = GuardHasPatrolPath(this.transform);
 
@@ -66,7 +70,9 @@ namespace ThirdPersonGame.Control
                     {
                         originPoint = originPointUpdate;
 
-                        if (Physics.Linecast(originPoint, player.position / 2, viewMask))
+                        if (Physics.Linecast(originPointUpdate, player.position / 2, viewMask)
+                            //|| !Physics.Linecast(originPointUpdate, player.position, viewMask)
+                            )
                         {
                             return true;
                         }
@@ -75,7 +81,7 @@ namespace ThirdPersonGame.Control
                     {
                         if (!Physics.Linecast(originPoint, player.position / 2 /*playerMidSection*/, viewMask)
                             || !Physics.Linecast(originPoint, player.position, viewMask)
-                            || !Physics.Linecast(originPointUpdate, player.position, viewMask)
+                            //|| !Physics.Linecast(originPointUpdate, player.position, viewMask)
                             )
                         {
                             return true;
@@ -106,6 +112,8 @@ namespace ThirdPersonGame.Control
             Gizmos.DrawRay(transform.position, transform.forward * viewDistance);
             Gizmos.color = Color.green;
             Gizmos.DrawRay(originPointUpdate, transform.forward * viewDistance);
+            //Gizmos.color = Color.yellow;
+            //Gizmos.DrawRay(originPoint, transform.forward * viewDistance);
         }
     }
 }

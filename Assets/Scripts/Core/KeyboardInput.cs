@@ -13,6 +13,7 @@ namespace ThirdPersonGame.Core
         CharacterControl control;
         public Transform Player;
         public bool toggleCrouch;
+        public bool toogleCrouchOnWall;
 
         private void Awake()
         {
@@ -24,6 +25,7 @@ namespace ThirdPersonGame.Core
             control = Player.transform.root.GetComponent<CharacterControl>();
             GroundDetector checkGround = (GroundDetector) ScriptableObject.CreateInstance(typeof(GroundDetector));
             var ledge = control.ledgeChecker;
+            var shortWall = control.shortWallChecker;
 
             // Control
             if (Input.GetKey(KeyCode.LeftShift))
@@ -139,8 +141,22 @@ namespace ThirdPersonGame.Core
                 VirtualInputManager.Instance.ShimmyLeft = false;
             }
 
+            if (Input.GetKey(KeyCode.F) && shortWall.IsCrouchingOnWall)
+            {
+                toogleCrouchOnWall = !toogleCrouchOnWall;
+
+                if (toogleCrouchOnWall)
+                {
+                    VirtualInputManager.Instance.CrouchOnWall = true;
+                }
+                else
+                {
+                    VirtualInputManager.Instance.CrouchOnWall = false;
+                }
+            }
+
             // Combat
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKey(KeyCode.E))
             {
                 VirtualInputManager.Instance.Attack = true;
             }

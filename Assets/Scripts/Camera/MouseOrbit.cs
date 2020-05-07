@@ -82,9 +82,10 @@ public class MouseOrbit : MonoBehaviour
         //float keysOrbitingSpeed = 120;
 
         // if player is on a ledge (Grabbing), we do not want to turn the character
-        UngroundedConstraints mouseConstraints = new UngroundedConstraints();        
+        InteractConstraints mouseConstraints = new InteractConstraints();        
         var control = viewTarget.transform.root.GetComponent<CharacterControl>();
         var isOnLedge = mouseConstraints.IsPlayerOnLedge(control);
+        var isCrouching = mouseConstraints.IsPlayerCrouching(control);
 
         if (!viewTarget)
             return;
@@ -94,7 +95,7 @@ public class MouseOrbit : MonoBehaviour
             RotateCamera();
         }
 
-        if (Input.GetMouseButton(1) /*|| Input.GetMouseButton(0)*/ && !isOnLedge)
+        if (Input.GetMouseButton(1) /*|| Input.GetMouseButton(0)*/ && !isOnLedge && !isCrouching)
         {
                 RotateCamera();           
 

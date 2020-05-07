@@ -5,12 +5,18 @@ using UnityEngine;
 
 namespace ThirdPersonGame.Interact
 {
-    public class UngroundedConstraints
+    public class InteractConstraints
     {
         public bool IsPlayerOnLedge(CharacterControl control)
         {
             var isOnLedge = control.ledgeChecker.IsGrabbingLedge;
             return isOnLedge;
+        }
+
+        public bool IsPlayerCrouching(CharacterControl control)
+        {
+            var isCrouching = control.shortWallChecker.IsCrouchingOnWall;
+            return isCrouching;
         }
     }
 }
